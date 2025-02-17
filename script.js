@@ -5,8 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const message = document.getElementById("h");
   const resultMessage = document.getElementById("para");
   let selectedImages = [];
-  
-  // Shuffle images function (will shuffle the images every time the page reloads)
+  let imagesLoaded = 0;
+
+  // Ensure images are fully loaded before running tests
+  function imageLoaded() {
+    imagesLoaded++;
+    if (imagesLoaded === images.length) {
+      console.log("All images loaded");
+    }
+  }
+
+  // Shuffle images
   function shuffleImages() {
     let parent = document.querySelector(".flex");
     let children = Array.from(parent.children);
@@ -14,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     children.forEach((child) => parent.appendChild(child));
   }
 
-  shuffleImages(); // Shuffle images on page load
+  shuffleImages();
 
   // Click on an image handler
   images.forEach((img) => {
@@ -22,13 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (selectedImages.length < 2 && !selectedImages.includes(img)) {
         img.classList.add("selected");
         selectedImages.push(img);
-        
+
         if (selectedImages.length === 1) {
-          resetButton.style.display = "inline-block"; // Show reset button
+          resetButton.style.display = "inline-block";
         }
-        
+
         if (selectedImages.length === 2) {
-          verifyButton.style.display = "inline-block"; // Show verify button
+          verifyButton.style.display = "inline-block";
         }
       }
     });
@@ -46,11 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Verify button functionality
   verifyButton.addEventListener("click", () => {
-    if (selectedImages[0].dataset.id === selectedImages[1].dataset.id) {
+    if (selectedImages.length === 2 && selectedImages[0].dataset.id === selectedImages[1].dataset.id) {
       resultMessage.textContent = "You are a human. Congratulations!";
     } else {
-      resultMessage.textContent = "We can't verify you as a human. You selected the non-identical tiles.";
+      resultMessage.textContent = "We can't verify you as a human. You selected non-identical tiles.";
     }
-    verifyButton.style.display = "none"; // Hide verify button after checking
+    verifyButton.style.display = "none";
   });
 });

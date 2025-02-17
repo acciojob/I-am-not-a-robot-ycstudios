@@ -11,12 +11,12 @@
     <main>
       <h3 id="h">Please click on the identical tiles to verify that you are not a robot.</h3>
       <div class="flex">
-        <img src="https://picsum.photos/id/237/200/300" class="img" alt="img1" data-id="1" />
-        <img src="https://picsum.photos/seed/picsum/200/300" class="img" alt="img2" data-id="2" />
-        <img src="https://picsum.photos/200/300?grayscale" class="img" alt="img3" data-id="3" />
-        <img src="https://picsum.photos/200/300/" class="img" alt="img4" data-id="4" />
-        <img src="https://picsum.photos/200/300.jpg" class="img" alt="img5" data-id="5" />
-        <img src="https://picsum.photos/id/237/200/300" class="img" alt="img6" data-id="1" /> <!-- duplicate -->
+        <img src="https://picsum.photos/id/237/200/300" class="img" alt="img1" data-id="1" onload="imageLoaded()" />
+        <img src="https://picsum.photos/seed/picsum/200/300" class="img" alt="img2" data-id="2" onload="imageLoaded()" />
+        <img src="https://picsum.photos/200/300?grayscale" class="img" alt="img3" data-id="3" onload="imageLoaded()" />
+        <img src="https://picsum.photos/200/300/" class="img" alt="img4" data-id="4" onload="imageLoaded()" />
+        <img src="https://picsum.photos/200/300.jpg" class="img" alt="img5" data-id="5" onload="imageLoaded()" />
+        <img src="https://picsum.photos/id/237/200/300" class="img" alt="img6" data-id="1" onload="imageLoaded()" /> 
       </div>
       <p id="para"></p>
       <button id="reset" style="display:none">Reset</button>
