@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Attach imageLoaded function dynamically
+  images.forEach((img) => {
+    img.addEventListener("load", imageLoaded);
+  });
+
   // Shuffle images
   function shuffleImages() {
     let parent = document.querySelector(".flex");
